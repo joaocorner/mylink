@@ -2,6 +2,8 @@ import './links.css';
 import { FiArrowLeft, FiLink, FiTrash } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
+import Menu from '../../components/Menu';
+
 export default function Links() {
   return (
     <div className='links-container'>
@@ -30,6 +32,8 @@ export default function Links() {
           <FiTrash size={24} color='#ff5454' />
         </button>
       </div>
+
+      <Menu/>
 
     </div>
   )
