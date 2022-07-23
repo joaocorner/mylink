@@ -7,6 +7,10 @@ import Menu from '../../components/Menu';
 export default function Home() {
     const [link, setLink] = useState('');
 
+    function handleShortLink() {
+    alert("my link is " + link);
+    }
+
     return (
         <div className="container-home">
 
@@ -25,7 +29,7 @@ export default function Home() {
                         onChange={  (e) => setLink(e.target.value)}
                     />
                 </div>
-                <button>Shorten</button>
+                <button onClick={handleShortLink}>Shorten</button>
             </div>
             <Menu />
         </div>
