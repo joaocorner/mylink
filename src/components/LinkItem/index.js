@@ -20,7 +20,7 @@ export default function LinkItem() {
                 https://bit.ly/2ZqZqZq
                 <FiClipboard size={20} color='#fff' />
             </button>
-            
+
         </div>
     )
 }
