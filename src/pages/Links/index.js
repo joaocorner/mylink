@@ -3,7 +3,7 @@ import './links.css';
 import { FiArrowLeft, FiLink, FiTrash } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
-import { getLinksSave } from '../services/storeLinks';
+import { getLinksSave, deleteLink } from '../services/storeLinks';
 import LinkItem from '../../components/LinkItem';
 
 import Menu from '../../components/Menu';
@@ -36,6 +36,17 @@ export default function Links() {
     setShowModal(true);
   }
 
+ async function handleDelete(id) {
+    const result = await deleteLink(myLinks, id);
+
+    if (result.length === 0) {//if there are no links saved, return
+      console.log('No links stored');
+    }
+
+    setMyLinks(result);
+
+  }
+
   return (
     <div className='links-container'>
       <div className='links-header'>
@@ -55,7 +66,9 @@ export default function Links() {
             <FiLink size={18} color='#fff' />
             {link.long_url}
           </button>
-          <button className='link-delete'>
+          <button
+          className='link-delete'
+          onClick={ () => handleDelete(link.id)}>
             <FiTrash size={24} color='#ff5454' />
           </button>
         </div>
