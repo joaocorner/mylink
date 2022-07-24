@@ -15,6 +15,8 @@ export default function Links() {
   const [data, setData] = useState({});
   const [showModal, setShowModal] = useState(false);
 
+  const [emptyList, setEmptyList] = useState(false);
+
 
   useEffect(() => {
     async function getLinks() {
@@ -22,6 +24,7 @@ export default function Links() {
 
       if (result.length === 0) {//if there are no links saved, return
         console.log('No links stored');
+        setEmptyList(true);
       }
 
       setMyLinks(result);
@@ -36,11 +39,12 @@ export default function Links() {
     setShowModal(true);
   }
 
- async function handleDelete(id) {
+  async function handleDelete(id) {
     const result = await deleteLink(myLinks, id);
 
     if (result.length === 0) {//if there are no links saved, return
       console.log('No links stored');
+      setEmptyList(true);
     }
 
     setMyLinks(result);
@@ -56,6 +60,12 @@ export default function Links() {
         <h1>My Links</h1>
       </div>
 
+      { emptyList && (
+        <div className='links-item'>
+          <h2 className='empty-text'>Your list is empty...</h2>
+        </div>
+      )}
+
       {myLinks.map(link => (
         <div
           key={link.id}
@@ -67,8 +77,8 @@ export default function Links() {
             {link.long_url}
           </button>
           <button
-          className='link-delete'
-          onClick={ () => handleDelete(link.id)}>
+            className='link-delete'
+            onClick={() => handleDelete(link.id)}>
             <FiTrash size={24} color='#ff5454' />
           </button>
         </div>

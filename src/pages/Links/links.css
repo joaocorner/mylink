@@ -60,6 +60,12 @@
     background-color: transparent;
 }
 
+.empty-text{
+    width: 100%;
+    text-align: center;
+    margin-top: 28px;
+}
+
 @media(max-width: 715px) {
     .links-container {
         width: 90%;
