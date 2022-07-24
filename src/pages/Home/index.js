@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { FiLink } from 'react-icons/fi';
+import { useState } from 'react'; //import useState from react
+import { FiLink } from 'react-icons/fi'; //import FiLink from react-icons/fi
 import './home.css';
 
 import Menu from '../../components/Menu';
@@ -7,7 +7,7 @@ import LinkItem from '../../components/LinkItem';
 
 import api from '../services/api';
 
-export default function Home() {
+export default function Home() { 
     const [link, setLink] = useState('');//link is the state and setLink is the function to update the state
     const [data, setData] = useState({});//data is the state and setData is the function to update the state
     const [showModal, setShowModal] = useState(false);//showModal is the state and setShowModal is the function to update the state
@@ -43,17 +43,18 @@ export default function Home() {
                 <div>
                     <FiLink size={24} color="#fff" />
                     <input
-                        placeholder="Paste your link here..."
-                        value={link}
-                        onChange={(e) => setLink(e.target.value)}
+                        placeholder="Paste your link here..." //placeholder is the text to be displayed
+                        value={link} //link is the state and setLink is the function to update the state
+                        onChange={(e) => setLink(e.target.value)} //setLink is the function to update the state
                     />
                 </div>
-                <button onClick={handleShortLink}>Shorten</button>
+                <button onClick={handleShortLink}>Shorten</button>//handleShortLink is the function to be executed
             </div>
             <Menu />
 
             {showModal && (<LinkItem
-                closeModal={() => setShowModal(false)}
+                closeModal={() => setShowModal(false)}//closeModal is the function to close the modal
+                //() => anonymous function to be executed when is needed, and not automatically executed
                 content={data} //data is the data to be displayed
             />)}
         </div>

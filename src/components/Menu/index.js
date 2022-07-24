@@ -1,8 +1,8 @@
-import './menu.css';
-import { BsLinkedin, BsGithub } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
+import './menu.css';//import css file
+import { BsLinkedin, BsGithub } from 'react-icons/bs';//import icons
+import { Link } from 'react-router-dom';//import Link from react-router-dom
 
-export default function Menu() {
+export default function Menu() {//Menu is the component to be rendered
   return (
     <div className="menu">
       <a

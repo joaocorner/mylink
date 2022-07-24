@@ -1,9 +1,9 @@
-import './link-item.css';
-import { FiX, FiClipboard } from 'react-icons/fi';
+import './link-item.css'; //import css file
+import { FiX, FiClipboard } from 'react-icons/fi'; //import icons
 
 export default function LinkItem({ closeModal, content }) {//closeModal is the function to close the modal and content is the data to be displayed
     
-    async function copyLink() {
+    async function copyLink() { //
         await navigator.clipboard.writeText(content.link);//write the link to the clipboard
     }
 
