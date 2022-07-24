@@ -7,9 +7,11 @@ import LinkItem from '../../components/LinkItem';
 
 export default function Home() {
     const [link, setLink] = useState('');
+    const [showModal, setShowModal] = useState(false);
+
 
     function handleShortLink() {
-    alert("my link is " + link);
+        setShowModal(true);
     }
 
     return (
@@ -27,14 +29,14 @@ export default function Home() {
                     <input
                         placeholder="Paste your link here..."
                         value={link}
-                        onChange={  (e) => setLink(e.target.value)}
+                        onChange={(e) => setLink(e.target.value)}
                     />
                 </div>
                 <button onClick={handleShortLink}>Shorten</button>
             </div>
             <Menu />
 
-            <LinkItem/>
+            {showModal && (<LinkItem />)}
         </div>
     )
 }
