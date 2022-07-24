@@ -8,21 +8,25 @@ import LinkItem from '../../components/LinkItem';
 import api from '../services/api';
 
 export default function Home() {
-    const [link, setLink] = useState('');
-    const [showModal, setShowModal] = useState(false);
+    const [link, setLink] = useState('');//link is the state and setLink is the function to update the state
+    const [data, setData] = useState({});//data is the state and setData is the function to update the state
+    const [showModal, setShowModal] = useState(false);//showModal is the state and setShowModal is the function to update the state
 
 
-    async function handleShortLink() {
+    async function handleShortLink() { //
         try {
             const response = await api.post('/shorten', {
                 long_url: link
 
             })
 
-            console.log(response);
+            setData(response.data);
+            setShowModal(true); // show modal
+            setLink(''); // reset input field
 
         } catch {
             alert('Erro ao gerar o link');
+            setLink(''); //reset link
         }
     }
 
@@ -50,6 +54,7 @@ export default function Home() {
 
             {showModal && (<LinkItem
                 closeModal={() => setShowModal(false)}
+                content={data} //data is the data to be displayed
             />)}
         </div>
     )
