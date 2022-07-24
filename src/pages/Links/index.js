@@ -4,6 +4,7 @@ import { FiArrowLeft, FiLink, FiTrash } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 import { getLinksSave } from '../services/storeLinks';
+import LinkItem from '../../components/LinkItem';
 
 import Menu from '../../components/Menu';
 
@@ -30,6 +31,11 @@ export default function Links() {
 
   }, []);
 
+  function handleOpenLink(link) {
+    setData(link);
+    setShowModal(true);
+  }
+
   return (
     <div className='links-container'>
       <div className='links-header'>
@@ -43,7 +49,9 @@ export default function Links() {
         <div
           key={link.id}
           className='links-item'>
-          <button className='link'>
+          <button
+            className='link'
+            onClick={() => handleOpenLink(link)}>
             <FiLink size={18} color='#fff' />
             {link.long_url}
           </button>
@@ -52,6 +60,13 @@ export default function Links() {
           </button>
         </div>
       ))}
+
+      {showModal && (<LinkItem
+        closeModal={() => setShowModal(false)}
+        content={data}
+      />
+      )}
+
     </div>
   )
 }
