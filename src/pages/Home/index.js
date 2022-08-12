@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <div className="container-home">
       <div className="logo">
-        <img src="/logo-link2.png" alt="logo" />
+        <img src="/mylink/logo-link2.png" alt="logo" />
         <h1>My Links</h1>
         <span>Paste your link to shorten 👇</span>
       </div>
